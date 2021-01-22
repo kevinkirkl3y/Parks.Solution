@@ -12,10 +12,10 @@ namespace ParkAPI.Controllers
   [ApiVersion("1.0")]
   [Route("api/nationalparks")]
   [ApiController]
-  public class NationalParksController : ControllerBase
+  public class NationalParksV1Controller : ControllerBase
   {
     private ParkAPIContext _db;
-    public NationalParksController(ParkAPIContext db)
+    public NationalParksV1Controller(ParkAPIContext db)
     {
       _db = db;
     }
@@ -24,6 +24,14 @@ namespace ParkAPI.Controllers
     public ActionResult<IEnumerable<NationalPark>> Get()
     {
       return _db.NationalParks.ToList();
+    }
+    [HttpGet]
+    [Route("random")]
+    public ActionResult<NationalPark> Random()
+    {
+      Random random = new Random();
+      int someNationalPark = random.Next(_db.NationalParks.ToList().Count);
+      return _db.NationalParks.FirstOrDefault(e => e.NationalParkId == someNationalPark);
     }
     //POST api/nationalparks
     [HttpPost]
@@ -55,4 +63,31 @@ namespace ParkAPI.Controllers
       _db.SaveChanges();
     }
   }
+  [ApiVersion("2.0")]
+  [Route("api/{Version:apiVersion}/nationalParks")]
+  [ApiController]
+  public class NationalParksV2Controller : ControllerBase
+  {
+    private ParkAPIContext _db;
+    public NationalParksV2Controller(ParkAPIContext db)
+    {
+      _db = db;
+    }
+    [HttpGet]
+    public ActionResult<IEnumerable<NationalPark>> Get(string name, string state)
+    {
+      var query = _db.NationalParks.AsQueryable();
+
+      if (name != null)
+      {
+        query = query.Where(e => e.Name == name);
+      }
+      if (state != null)
+      {
+        query = query.Where(e => e.State == state);
+      }
+      return query.ToList();
+    }
+  }
+
 }
