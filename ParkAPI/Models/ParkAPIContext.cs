@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Parks.Models
+namespace ParkAPI.Models
 {
-  public class ParksContext : DbContext
+  public class ParkAPIContext : DbContext
   {
-    public ParksContext(DbContextOptions<ParksContext> options)
+    public ParkAPIContext(DbContextOptions<ParkAPIContext> options)
         : base(options)
         {  
         } 

@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Parks": {
+    "ParkAPI": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",

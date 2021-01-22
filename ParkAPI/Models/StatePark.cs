@@ -1,4 +1,4 @@
-namespace Parks.Models
+namespace ParkAPI.Models
 {
   public class StatePark
   {

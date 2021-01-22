@@ -1,4 +1,4 @@
-﻿using Parks.Models;
+﻿using ParkAPI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 
-namespace Parks
+namespace ParkAPI
 {
     public class Startup
     {
@@ -21,7 +21,7 @@ namespace Parks
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ParksContext>(o =>
+            services.AddDbContext<ParkAPIContext>(o =>
                 o.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
