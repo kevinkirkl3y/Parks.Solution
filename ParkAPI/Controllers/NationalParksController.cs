@@ -74,6 +74,7 @@ namespace ParkAPI.Controllers
     {
       _db = db;
     }
+    //GET api/2.0/nationalparks?{parameter}={query}
     [HttpGet]
     public ActionResult<IEnumerable<NationalPark>> Get(string name, string state)
     {
