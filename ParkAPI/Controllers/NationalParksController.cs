@@ -7,7 +7,7 @@ using System;
 
 namespace ParkAPI.Controllers
 {
-  [Route("api/NationalParks")]
+  [Route("api/nationalparks")]
   [ApiController]
   public class NationalParksController : ControllerBase
   {
@@ -26,7 +26,7 @@ namespace ParkAPI.Controllers
     [HttpPost]
     public void Post([FromBody] NationalPark nationalPark)
     {
-      _db.NationalParks.Add(nationalpark);
+      _db.NationalParks.Add(nationalPark);
       _db.SaveChanges();
     }
     //GET api/nationalparks/{id}
@@ -45,7 +45,7 @@ namespace ParkAPI.Controllers
     }
     //DELETE api/nationalparks/{id}
     [HttpDelete("{id}")]
-    public void Delet(int id)
+    public void Delete(int id)
     {
       var natlParkToDelete = _db.NationalParks.FirstOrDefault(e => e.NationalParkId == id);
       _db.NationalParks.Remove(natlParkToDelete);
