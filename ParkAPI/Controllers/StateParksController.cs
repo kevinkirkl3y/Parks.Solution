@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using ParkAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Threading.Tasks;
 
 namespace ParkAPI.Controllers
 {
+  [ApiVersion("1.0")]
   [Route("api/stateparks")]
   [ApiController]
   public class StateParksController : ControllerBase
