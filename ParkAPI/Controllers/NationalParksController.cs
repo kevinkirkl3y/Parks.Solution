@@ -25,6 +25,7 @@ namespace ParkAPI.Controllers
     {
       return _db.NationalParks.ToList();
     }
+    //GET api/nationalParks/random
     [HttpGet]
     [Route("random")]
     public ActionResult<NationalPark> Random()

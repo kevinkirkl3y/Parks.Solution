@@ -12,10 +12,10 @@ namespace ParkAPI.Controllers
   [ApiVersion("1.0")]
   [Route("api/stateparks")]
   [ApiController]
-  public class StateParksController : ControllerBase
+  public class StateParksV1Controller : ControllerBase
   {
     private ParkAPIContext _db;
-    public StateParksController(ParkAPIContext db)
+    public StateParksV1Controller(ParkAPIContext db)
     {
       _db = db;
     }
@@ -24,6 +24,15 @@ namespace ParkAPI.Controllers
     public ActionResult<IEnumerable<StatePark>> Get()
     {
       return _db.StateParks.ToList();
+    }
+    //GET api/stateParks/random
+    [HttpGet]
+    [Route("random")]
+    public ActionResult<StatePark> Random()
+    {
+      Random random = new Random();
+      int someStatePark = random.Next(_db.StateParks.ToList().Count);
+      return _db.StateParks.FirstOrDefault(e => e.StateParkId == someStatePark);
     }
     //POST api/stateparks
     [HttpPost]
@@ -54,6 +63,31 @@ namespace ParkAPI.Controllers
       _db.StateParks.Remove(stateParkToDelete);
       _db.SaveChanges();
     }
+  }
+  [ApiVersion("2.0")]
+  [Route("api/{Version:apiVersion}/stateParks")]
+  [ApiController]
+  public class StateParksV2Controller : ControllerBase
+  {
+    private ParkAPIContext _db;
+    public StateParksV2Controller(ParkAPIContext db)
+    {
+      _db = db;
+    }
+    [HttpGet]
+    public ActionResult<IEnumerable<StatePark>> Get(string name, string state)
+    {
+      var query = _db.StateParks.AsQueryable();
 
+      if (name != null)
+      {
+        query = query.Where(e => e.Name == name);
+      }
+      if (state != null)
+      {
+        query = query.Where(e => e.State == state);
+      }
+      return query.ToList();
+    }
   }
 }
