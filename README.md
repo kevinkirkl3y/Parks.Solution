@@ -5,7 +5,7 @@
 #### by _**Kevin Kirkley**_
 
 ## Description
-
+Park API is a program designed to hold data in a MySQL database for future use in MVC or terminal based programs. It holds data for two types of objects, National Parks and State Parks. The information is fairly basic consisting of the park Name, State of location, Address or GPS coordinates, webpage url and approximate size in square miles. Parks are queryable based on Name or State and through the use of a "Random" request users can find a randomly selected park. The program utilizes Swashbuckler to provide Swagger Documentation and has Versioning functionality. 
 
 ## Known Bugs
 * No known bugs at this time. 1.22.2021
@@ -124,7 +124,7 @@ _Contact Kevin Kirkley at [kevinmkirkley@gmail.com](mailto:kevinmkirkley@gmail.c
 Copyright (c) 2020 **_Kevin Kirkley_**
 This software is licensed under the MIT license.
 
-Copyright 2020 Kevin Kirkley
+Copyright 2021 Kevin Kirkley
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
