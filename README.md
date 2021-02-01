@@ -64,11 +64,51 @@ Explore the API endpoints using Postman of a browser.
 
 To Explore `ParkAPI` with Swashbuckle, launch the project using `dotnet run` and open you local server in your browser. Use the following URL to navigate to the Swagger Documentation: `http://localhost:5000/swagger`
 
-#### Example Query
+### Queries
+Both National and State Parks are queriable both by name and the State in which they are located. This is done using the 2.0 version of the API. The queries are set to return results that contain the string inputted by the user.
 
 ```
-http://localhost:5000/api/2.0/nationalparks?name=death%20valley%20national%20park
+http://localhost:5000/api/2.0/{parkcategory}?{query=string}
 ```
+
+#### Example Queries
+Query by name:
+```
+http://localhost:5000/api/2.0/nationalparks?name=death%20valley
+```
+Will Return:
+```
+[
+    {
+        "nationalParkId": 2,
+        "name": "Death Valley National Park",
+        "state": "California",
+        "address": "P.O. Box 579 Death Valley, CA 92328",
+        "website": "https://www.nps.gov/deva/index.htm",
+        "totalArea": "5,270 mi²"
+    }
+]
+```
+Query by state:
+```
+http://localhost:5004/api/2.0/nationalparks?state=zona
+```
+Will Return:
+```
+[
+    {
+        "nationalParkId": 1,
+        "name": "Grand Canyon National Park",
+        "state": "Arizona",
+        "address": "PO Box 129 Grand Canyon, AZ 86023",
+        "website": "https://www.nps.gov/grca/index.htm",
+        "totalArea": "1902 mi²"
+    }
+]
+```
+
+* _Users are not required to match exact parameter to return result._
+* _State Parks have the same functionality by adding query to ``http://localhost:5004/api/2.0/stateparks?{query=string}``_
 
 ### Endpoints
 Base URL: `https://localhost:5000`
